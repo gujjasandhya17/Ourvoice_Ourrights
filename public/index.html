@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Voice, Our Rights — MGNREGA District Viewer</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- jsPDF for client-side PDF export -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <div>
+            <h1 id="t_title">Our Voice, Our Rights</h1>
+            <p id="t_tag" class="tag">MGNREGA performance — simple view for everyone</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <button id="langEn">English</button>
+            <button id="langHi">हिन्दी</button>
+          </div>
+        </div>
+    </header>
+
+    <main>
+      <div class="controls">
+        <div class="control-group">
+          <label for="district" id="t_districtLabel">District</label>
+          <select id="district"></select>
+        </div>
+        <div class="control-group">
+          <button id="detectBtn" class="primary">Detect my District</button>
+          <button id="refreshBtn">Refresh Data</button>
+        </div>
+      </div>
+
+      <section class="summary">
+        <div id="card-jobs" class="card">
+          <div class="card-title" id="t_jobsTitle">Jobs (recent month)</div>
+          <div class="card-value" id="jobsValue">—</div>
+          <div style="font-size:0.9rem;margin-top:6px;color:#444" id="jobsChange">&nbsp;</div>
+        </div>
+        <div id="card-persondays" class="card">
+          <div class="card-title" id="t_pdTitle">Person-days</div>
+          <div class="card-value" id="pdValue">—</div>
+        </div>
+        <div id="card-wages" class="card">
+          <div class="card-title" id="t_wagesTitle">Wages paid</div>
+          <div class="card-value" id="wagesValue">—</div>
+        </div>
+      </section>
+
+      <section class="chart-wrap">
+        <canvas id="trendChart" height="120"></canvas>
+      </section>
+
+      <div class="explain">
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+          <button id="speakBtn">🔊 Explain (Listen)</button>
+          <button id="downloadPdfBtn">⬇️ Download report</button>
+        </div>
+        <p id="explainText">Choose a district to see its monthly performance. Colors: green good, red shows drop vs previous month.</p>
+      </div>
+
+    </main>
+
+    <footer>
+      <small>Demo — Data from MGNREGA (data.gov.in). For production, this app caches data to avoid rate limits.</small>
+    </footer>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "our-voice-our-rights",
+  "version": "0.1.0",
+  "description": "MGNREGA district performance viewer (demo scaffold)",
+  "main": "index.js",
+  "scripts": {
+  "start": "node index.js",
+  "dev": "nodemon index.js",
+  "seed:districts": "node scripts/seed_districts.js"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node-cron": "^3.0.2",
+    "sqlite3": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
