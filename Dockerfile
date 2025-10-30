@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 COPY package.json package-lock.json* ./
 # Install production dependencies and build native modules from source when needed
-RUN npm install --production --build-from-source
+# Use npm ci for reproducible install when package-lock.json is present
+RUN if [ -f package-lock.json ]; then npm ci --production --build-from-source; else npm install --production --build-from-source; fi
 COPY . .
 ENV NODE_ENV=production
 EXPOSE 4000
