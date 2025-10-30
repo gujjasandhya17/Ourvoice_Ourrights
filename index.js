@@ -144,6 +144,19 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT}`);
+  // Log which DB mode we're using (helps diagnose Render logs)
+  const usePostgres = !!process.env.DATABASE_URL;
+  const maskDbUrl = (u) => {
+    if (!u) return '';
+    try {
+      const url = new URL(u);
+      return `${url.protocol}//${url.username ? '***' : ''}${url.username ? '@' : ''}${url.hostname}:${url.port}${url.pathname}`;
+    } catch (e) {
+      return 'masked';
+    }
+  };
+  if (usePostgres) console.log('Using Postgres. DATABASE_URL=' + maskDbUrl(process.env.DATABASE_URL));
+  else console.log('Using SQLite (local file)');
   try {
     await db.init();
     console.log('DB initialized');
