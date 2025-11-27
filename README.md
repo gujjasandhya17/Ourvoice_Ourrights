@@ -7,7 +7,7 @@
 
 ## 🧩 Overview
 
-**Our Voice, Our Rights** turns **MGNREGA open data** into simple, actionable visuals — so citizens, especially in rural areas with limited data literacy, can understand local program performance easily.  
+**Our Voice, Our Rights** turns **MGNREGA open data** into simple, actionable visuals — so citizens, especially in rural areas with limited data literacy , can understand local program performance easily.  
 
 The app emphasizes **clarity and accessibility** through:
 - Large, readable UI 
